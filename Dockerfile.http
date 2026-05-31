@@ -16,8 +16,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 
 # Install dependencies and Playwright system deps
-RUN --mount=type=cache,target=/root/.npm,sharing=locked,id=s/936778f0-71dd-4b2c-ab7d-ac1f64c82133-/root/.npm \
-  npm ci --only=production && \
+RUN npm ci --omit=dev && \
   # Install system dependencies for playwright
   npx -y playwright-core install-deps chromium
 
