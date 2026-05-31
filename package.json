@@ -16,6 +16,7 @@
   "license": "Apache-2.0",
   "mcpName": "io.github.microsoft/playwright-mcp",
   "scripts": {
+    "start": "node server.js",
     "lint": "node update-readme.js",
     "test": "playwright test",
     "ctest": "playwright test --project=chrome",
@@ -24,9 +25,9 @@
     "dtest": "MCP_IN_DOCKER=1 playwright test --project=chromium-docker",
     "build": "echo OK",
     "npm-publish": "npm run lint && npm run test && npm publish",
-    "docker-build": "docker build --no-cache -t playwright-mcp-dev:latest .",
-    "docker-rm": "docker rm playwright-mcp-dev",
-    "docker-run": "docker run -it -p 8080:8080 --name playwright-mcp-dev playwright-mcp-dev:latest",
+    "docker-build": "docker build --no-cache -t playwright-mcp-http:latest .",
+    "docker-rm": "docker rm playwright-mcp-http",
+    "docker-run": "docker run -it -p 8080:8080 --name playwright-mcp-http playwright-mcp-http:latest",
     "roll": "node roll.js"
   },
   "exports": {
@@ -38,10 +39,11 @@
   },
   "dependencies": {
     "playwright": "1.61.0-alpha-1778188671000",
-    "playwright-core": "1.61.0-alpha-1778188671000"
+    "playwright-core": "1.61.0-alpha-1778188671000",
+    "express": "^4.18.2",
+    "@modelcontextprotocol/sdk": "^1.25.2"
   },
   "devDependencies": {
-    "@modelcontextprotocol/sdk": "^1.25.2",
     "@playwright/test": "1.61.0-alpha-1778188671000",
     "@types/node": "^24.3.0"
   },
