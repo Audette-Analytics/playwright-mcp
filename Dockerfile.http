@@ -12,9 +12,11 @@ ENV NODE_ENV=production
 # Set the working directory
 WORKDIR /app
 
+# Copy package files
+COPY package.json package-lock.json ./
+
+# Install dependencies and Playwright system deps
 RUN --mount=type=cache,target=/root/.npm,sharing=locked,id=s/936778f0-71dd-4b2c-ab7d-ac1f64c82133-/root/.npm \
-    --mount=type=bind,source=package.json,target=package.json \
-    --mount=type=bind,source=package-lock.json,target=package-lock.json \
   npm ci --only=production && \
   # Install system dependencies for playwright
   npx -y playwright-core install-deps chromium
