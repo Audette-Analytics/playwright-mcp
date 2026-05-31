@@ -12,7 +12,7 @@ ENV NODE_ENV=production
 # Set the working directory
 WORKDIR /app
 
-RUN --mount=type=cache,target=/root/.npm,sharing=locked,id=npm-cache \
+RUN --mount=type=cache,target=/root/.npm,sharing=locked,id=s/936778f0-71dd-4b2c-ab7d-ac1f64c82133-/root/.npm \
     --mount=type=bind,source=package.json,target=package.json \
     --mount=type=bind,source=package-lock.json,target=package-lock.json \
   npm ci --only=production && \
